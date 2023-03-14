@@ -1,0 +1,29 @@
+_schema-version: "3.2"
+ID: MTA_Project
+version: 0.0.1
+modules:
+- name: db
+  type: hdb
+  path: db
+  requires:
+  - name: hdi_db
+- name: db_HDB_Mod01
+  type: hdb
+  path: db_HDB_Mod01
+  requires:
+  - name: hdi_db_HDB_Mod01
+resources:
+- name: hdi_db
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: Schema_MTA
+  properties:
+    hdi-container-name: ${service-name}
+- name: hdi_db_HDB_Mod01
+  type: com.sap.xs.hdi-container
+  parameters:
+    config:
+      schema: SchemaMod_01
+  properties:
+    hdi-container-name: ${service-name}
